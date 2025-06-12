@@ -13,7 +13,7 @@ function renderOneBook(i){
                         <p class="book-infos-price">${books[i].price.toFixed(2)} €</p>
                         <div class="book-infos-like_btn">
                             <p class="book-infos-like_btn-count">${books[i].likes}</p>
-                            <img src="./assets/icons/heart-regular.svg" alt="">
+                            ${checkIfLikedAndRenderLikeBtn(i)}
                         </div> 
                     </div>
                     <div>
@@ -44,21 +44,7 @@ function renderOneBook(i){
                     <div class="book-comments-list">
                         <table class="book-comments-list-table">
                             <tbody>
-                                <tr>
-                                    <td>[Kevin]</td>
-                                    <td>:&nbsp;&nbsp;&nbsp;</td>
-                                    <td>Eine Nachricht zum test dieser Funktion.</td>
-                                </tr>
-                                <tr>
-                                    <td>[DemisMoysidis]</td>
-                                    <td>:&nbsp;&nbsp;&nbsp;</td>
-                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum repellat perferendis, laboriosam neque dignissimos dolor accusantium quae officia id sed atque in magni earum! Voluptate saepe id unde. Saepe, id?</td>
-                                </tr>
-                                <tr>
-                                    <td>[Demis]</td>
-                                    <td>:&nbsp;&nbsp;&nbsp;</td>
-                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum repellat perferendis, laboriosam neque dignissimos dolor accusantium quae officia id sed atque in magni earum! Voluptate saepe id unde. Saepe, id?</td>
-                                </tr>
+                                ${renderAllCommentsForBook(i)}
                             </tbody>
                         </table>
                     </div>
@@ -71,4 +57,25 @@ function renderOneBook(i){
             `
 }
 
+function renderOneComment(indexBook, indexComment){
+    return /*html*/`<tr>
+                        <td>[${books[indexBook].comments[indexComment].name}]</td>
+                        <td>:&nbsp;&nbsp;&nbsp;</td>
+                        <td>${books[indexBook].comments[indexComment].comment}</td>
+                    </tr>`
+}
+
+function checkIfLikedAndRenderLikeBtn(indexBook){
+    if(books[indexBook].liked){
+        return /*html*/`
+                <img onclick="toggleLike(${indexBook})" id="heart-regular-${indexBook}" class="d_none" src="./assets/icons/heart-regular.svg" alt="">
+                <img onclick="toggleLike(${indexBook})" id="heart-solid-${indexBook}" src="./assets/icons/heart-solid.svg" alt="">
+                `
+    }else{
+        return /*html*/`
+                <img onclick="toggleLike(${indexBook})" id="heart-regular-${indexBook}" src="./assets/icons/heart-regular.svg" alt="">
+                <img onclick="toggleLike(${indexBook})" id="heart-solid-${indexBook}" class="d_none" src="./assets/icons/heart-solid.svg" alt="">
+                `
+    }
+}
 

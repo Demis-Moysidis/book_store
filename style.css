@@ -43,6 +43,10 @@ h3{
     margin: 0 auto;
 }
 
+.d_none{
+    display: none;
+}
+
 /* Navbar */
 nav{
     background-color: var(--nav-bg-color);
@@ -74,7 +78,7 @@ main{
 }
 
 .book{
-    max-width: 520px;
+    width: 520px;
     color: white;
     background-color: var(--book-bg-color);
     padding: 24px;
