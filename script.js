@@ -23,3 +23,15 @@ function toggleLike(i){
     document.getElementById(`heart-solid-${i}`).classList.toggle('d_none');
 }
 
+function sendCommentToBook(i){
+    let refCommentInput = document.getElementById(`book-comments-input-${i}`);
+    let inputValue = refCommentInput.value;
+
+    if(inputValue){
+        books[i].comments.unshift({"name": "Demis", "comment": inputValue});
+        refCommentInput.value = '';
+
+        let refBookComments = document.getElementById(`book-comments-${i}`);
+        refBookComments.innerHTML = renderAllCommentsForBook(i);
+    }
+}

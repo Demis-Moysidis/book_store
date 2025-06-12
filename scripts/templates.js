@@ -43,14 +43,14 @@ function renderOneBook(i){
                     <p><b>Kommentare:</b></p>
                     <div class="book-comments-list">
                         <table class="book-comments-list-table">
-                            <tbody>
+                            <tbody id="book-comments-${i}">
                                 ${renderAllCommentsForBook(i)}
                             </tbody>
                         </table>
                     </div>
                     <div class="book-comments-input">
-                        <input type="text" placeholder="Schreibe dein Kommentar...">    
-                        <img src="./assets/icons/paper-plane-regular.svg" alt="">
+                        <input id="book-comments-input-${i}" type="text" placeholder="Schreibe dein Kommentar...">    
+                        <img onclick="sendCommentToBook(${i})" src="./assets/icons/paper-plane-regular.svg" alt="">
                     </div>
                 </div>
             </div>
