@@ -12,7 +12,7 @@ function renderOneBook(i){
                     <div class="book-infos">
                         <p class="book-infos-price">${books[i].price.toFixed(2)} €</p>
                         <div class="book-infos-like_btn">
-                            <p class="book-infos-like_btn-count">${books[i].likes}</p>
+                            <p id="book-infos-like-count-${i}" class="book-infos-like_btn-count">${books[i].likes}</p>
                             ${checkIfLikedAndRenderLikeBtn(i)}
                         </div> 
                     </div>
@@ -66,7 +66,7 @@ function renderOneComment(indexBook, indexComment){
 }
 
 function checkIfLikedAndRenderLikeBtn(indexBook){
-    if(books[indexBook].liked){
+    if(books[indexBook].liked){     
         return /*html*/`
                 <img onclick="toggleLike(${indexBook})" id="heart-regular-${indexBook}" class="d_none" src="./assets/icons/heart-regular.svg" alt="">
                 <img onclick="toggleLike(${indexBook})" id="heart-solid-${indexBook}" src="./assets/icons/heart-solid.svg" alt="">

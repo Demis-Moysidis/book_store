@@ -18,9 +18,17 @@ function renderAllCommentsForBook(indexBook){
     return htmlComments
 }
 
-function toggleLike(i){
-    document.getElementById(`heart-regular-${i}`).classList.toggle('d_none');
-    document.getElementById(`heart-solid-${i}`).classList.toggle('d_none');
+function toggleLike(indexBook){
+    if(books[indexBook].liked){
+        setNewLikeCountForBook(indexBook, 'minus');
+        books[indexBook].liked = false;
+    }else{
+        setNewLikeCountForBook(indexBook, 'plus');
+        books[indexBook].liked = true;
+    }
+
+    document.getElementById(`heart-regular-${indexBook}`).classList.toggle('d_none');
+    document.getElementById(`heart-solid-${indexBook}`).classList.toggle('d_none');
 }
 
 function sendCommentToBook(i){
@@ -33,5 +41,16 @@ function sendCommentToBook(i){
 
         let refBookComments = document.getElementById(`book-comments-${i}`);
         refBookComments.innerHTML = renderAllCommentsForBook(i);
+    }
+}
+
+function setNewLikeCountForBook(indexBook, operator){
+    let refBookLike = document.getElementById(`book-infos-like-count-${indexBook}`);
+    let valueBookLike = refBookLike.textContent;
+
+    if(operator == 'plus'){
+        refBookLike.innerHTML = +valueBookLike + 1;
+    }else{
+        refBookLike.innerHTML = +valueBookLike - 1;
     }
 }

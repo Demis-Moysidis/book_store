@@ -163,7 +163,7 @@ main{
 .book-comments-list{
     height: 180px;
     display: block;
-    overflow-y: scroll;
+    overflow-y: auto;
     width: 100%
 }
 
