@@ -35,6 +35,7 @@ h2{
 
 h3{
     font-size: 24px;
+    margin: 16px 0px;
 }
 
 .container{
@@ -104,7 +105,7 @@ main{
     gap: 18px;
 }
 
-.book img{
+.book-img_bg img{
     width: 200px;
 }
 
@@ -215,12 +216,59 @@ footer{
 
 .footer{
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    gap: 16px;
+}
+
+.footer-left{
+    display: flex;
     align-items: center;
     color: white;
-    gap: 16px
+    gap: 10px
+}
+
+.footer-right{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-right a{
+    color: white;
+    margin: 16px 0px;
 }
 
 .footer img{
     width: 35px;
     height: 35px;
+}
+
+@media (max-width: 750px) {
+    h1{
+        font-size: 24px;
+    }
+
+    h2{
+        font-size: 20px;
+    }
+    
+    .book-img_bg img{
+        width: 100px;
+    }
+
+    .book-comments p{
+        font-size: 18px;
+    }
+
+    .book-infos-price{
+        font-size: 24px;
+    }
+
+    .book-comments-list table{
+        font-size: 14px;
+    }
 }

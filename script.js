@@ -1,4 +1,8 @@
 function init(){
+    let booksFromLocalStorage = localStorage.getItem('books');
+    if(booksFromLocalStorage){
+        books = JSON.parse(booksFromLocalStorage);
+    }
     renderAllBooksFromJSON();
 }
 
@@ -22,9 +26,11 @@ function toggleLike(indexBook){
     if(books[indexBook].liked){
         setNewLikeCountForBook(indexBook, 'minus');
         books[indexBook].liked = false;
+        saveUpdatedBooksInLocalStorage();
     }else{
         setNewLikeCountForBook(indexBook, 'plus');
         books[indexBook].liked = true;
+        saveUpdatedBooksInLocalStorage();
     }
 
     document.getElementById(`heart-regular-${indexBook}`).classList.toggle('d_none');
@@ -38,6 +44,7 @@ function sendCommentToBook(i){
     if(inputValue){
         books[i].comments.unshift({"name": "Demis", "comment": inputValue});
         refCommentInput.value = '';
+        saveUpdatedBooksInLocalStorage();
 
         let refBookComments = document.getElementById(`book-comments-${i}`);
         refBookComments.innerHTML = renderAllCommentsForBook(i);
@@ -50,7 +57,15 @@ function setNewLikeCountForBook(indexBook, operator){
 
     if(operator == 'plus'){
         refBookLike.innerHTML = +valueBookLike + 1;
+        books[indexBook].likes += 1;
+        saveUpdatedBooksInLocalStorage();
     }else{
         refBookLike.innerHTML = +valueBookLike - 1;
+        books[indexBook].likes -= 1;
+        saveUpdatedBooksInLocalStorage();
     }
+}
+
+function saveUpdatedBooksInLocalStorage(){
+    localStorage.setItem('books', JSON.stringify(books));
 }
