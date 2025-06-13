@@ -69,3 +69,11 @@ function setNewLikeCountForBook(indexBook, operator){
 function saveUpdatedBooksInLocalStorage(){
     localStorage.setItem('books', JSON.stringify(books));
 }
+
+function checkIfLikedAndRenderLikeBtn(indexBook){
+    if(books[indexBook].liked){     
+        return renderBookIsLiked(indexBook);
+    }else{
+        return renderBookIsNotLiked(indexBook);
+    }
+}
