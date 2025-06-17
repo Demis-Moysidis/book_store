@@ -65,18 +65,9 @@ function renderOneComment(indexBook, indexComment){
                     </tr>`
 }
 
-function renderBookIsLiked(indexBook){
+function renderBookLikeBtn(indexBook, lickedIcon, notLikedIcon){
     return /*html*/`
-        <img onclick="toggleLike(${indexBook})" id="heart-regular-${indexBook}" class="d_none" src="./assets/icons/heart-regular.svg" alt="">
-        <img onclick="toggleLike(${indexBook})" id="heart-solid-${indexBook}" src="./assets/icons/heart-solid.svg" alt="">
+        <img onclick="toggleLike(${indexBook})" id="heart-regular-${indexBook}" class="${notLikedIcon}" src="./assets/icons/heart-regular.svg" alt="">
+        <img onclick="toggleLike(${indexBook})" id="heart-solid-${indexBook}" class="${lickedIcon}" src="./assets/icons/heart-solid.svg" alt="">
         `
 }
-
-function renderBookIsNotLiked(indexBook){
-    return /*html*/`
-        <img onclick="toggleLike(${indexBook})" id="heart-regular-${indexBook}" src="./assets/icons/heart-regular.svg" alt="">
-        <img onclick="toggleLike(${indexBook})" id="heart-solid-${indexBook}" class="d_none" src="./assets/icons/heart-solid.svg" alt="">
-        `
-
-}
-

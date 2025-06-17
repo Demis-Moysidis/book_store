@@ -58,11 +58,9 @@ function setNewLikeCountForBook(indexBook, operator){
     if(operator == 'plus'){
         refBookLike.innerHTML = +valueBookLike + 1;
         books[indexBook].likes += 1;
-        saveUpdatedBooksInLocalStorage();
     }else{
         refBookLike.innerHTML = +valueBookLike - 1;
         books[indexBook].likes -= 1;
-        saveUpdatedBooksInLocalStorage();
     }
 }
 
@@ -72,8 +70,8 @@ function saveUpdatedBooksInLocalStorage(){
 
 function checkIfLikedAndRenderLikeBtn(indexBook){
     if(books[indexBook].liked){     
-        return renderBookIsLiked(indexBook);
+        return renderBookLikeBtn(indexBook, "", "d_none");
     }else{
-        return renderBookIsNotLiked(indexBook);
+        return renderBookLikeBtn(indexBook, "d_none", "");
     }
 }
